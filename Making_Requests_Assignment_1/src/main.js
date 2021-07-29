@@ -3,45 +3,42 @@ const BASE_URL = "http://localhost:5000";
 
 function index() {
   const url = `${BASE_URL}/constellations`;
-  axios.get(url).then((response) => {
+  return axios.get(url).then((response) => {
     console.log(response.data);
+    return response.data;
   });
 }
 
 function create(body) {
-  const url = `${BASE_URL}/constellations/${body}`;
-  axios
-    .post(url, {
-      name: "Ara",
-      meaning: "Altar",
-      starsWithPlanets: 7,
-      quadrant: "SQ3",
-    })
-    .then((response) => {
-      console.log(response.data);
-    });
+  const url = `${BASE_URL}/constellations`;
+  return axios.post(url, body).then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
 }
 
 function show(id) {
   const url = `${BASE_URL}/constellations/${id}`;
-  axios.get(url).then((response) => {
-    const result = response.data.filter((constellation) => {
-      if(constellation.id === id) {
-        console.log(constellation.data);
-      };
-    });
-    return result;
+  return axios.get(url).then((response) => {
+    console.log(response.data);
+    return response.data;
   });
 }
 
 function update(id, body) {
   const url = `${BASE_URL}/constellations/${id}`;
-  axios.put(url);
+  return axios.put(url, body).then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
 }
 
 function destroy(id) {
   const url = `${BASE_URL}/constellations/${id}`;
-  axios.delete(url);
+  return axios.delete(url).then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
 }
 
 module.exports = {
